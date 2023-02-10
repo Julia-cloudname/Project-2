@@ -1,6 +1,11 @@
 h1 {
     text-align: center;
 }
+p {
+    text-align: center;  
+}
+
+/* Style for elements in game area */
 div {
 	border: 1px solid black;
 	padding: 10px 10px;
@@ -17,12 +22,7 @@ div {
     padding-top: 10px;
     margin-left: 10px;
 }
-
-.control-area {
-    width: 100px;
-    margin-left: 10px;
-}
-
+ 
 #box1, #box2, #box3, #box4, #box5, #box6{
     content: url(../images/dice1.png);
     width: 50px;
@@ -31,7 +31,9 @@ div {
     border-radius: 4px;
     margin-left: 15px;
     padding: 5px;
+    
     z-index: index 1;
+
 }
 
 #box1{
@@ -56,8 +58,15 @@ div {
 
 #box6{
     content: url(../images/dice6.png);
+    display: none;
 }
 
+.control-area {
+    width: 100px;
+    margin-left: 10px;
+}
+
+/* Style for tabel */
 #tabel {
     width: 70%;
 	position:absolute;
