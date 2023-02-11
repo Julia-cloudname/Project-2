@@ -1,28 +1,77 @@
-/**
- * Function display dice in random order, used Fisher-Yates shuffle algorithm
- * to randomly shuffle the elements in the "boxes" array
- */
-function displayRandomOrder() {
-    let boxes = [
-      document.getElementById("box1"),
-      document.getElementById("box2"),
-      document.getElementById("box3"),
-      document.getElementById("box4"),
-      document.getElementById("box5"),
-      document.getElementById("box6")
-    ];
-    
-    for (let i = boxes.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [boxes[i], boxes[j]] = [boxes[j], boxes[i]];
-    }
 
-    for (let i = 0; i < boxes.length; i++) {
-        document.querySelector(".dice-area").appendChild(boxes[i]);
-    }
-      
+/**
+ *  
+ * @returns random number from 1 to 6
+ */
+function throwDice() {
+  let min = 1;
+  let max = 6;
+  return Math.floor(Math.random() * max) + min;  
+}
+
+console.log(throwDice());
+
+/**
+ * 
+ * @returns array of random numbers
+ */
+function throwDices() {
+  values = [];
+  for (let i = 0; i < 5; i++) {
+    values.push(throwDice());
   }
-//   Addition EventListener to buttom Roll
-  const rollBtn = document.querySelector('.btn[data-type="submit"]');
-  rollBtn.addEventListener("click", displayRandomOrder);
+  
+  return values;
+}
+
+/**
+ * It takes as arguments an array of @param {*} oldValues  and @param {*} indexes of elements 
+ * that should remain unchanged.  @returns the updated array of values. For elements whose 
+ * indices are not included in fixedIndexes, the function generates new random numbers using 
+ * throwDice and updates the corresponding elements of the oldValues array.
+ *
+ */
+function reThrowDices(oldValues, fixedIndexes) {
+  values = oldValues;
+  for (let i = 0; i < 5; i++) {
+    if (fixedIndexes.includes(i)){
+      continue;
+    }
     
+    values[i] = throwDice();
+  }
+  
+  return values;
+}
+
+/**
+ * Function check is there any pairs in array or no. Return true or false
+ */
+function pairCount(values) {
+  let pair = [];
+  for (let i = 0; i < values.length; i++) {
+      for (let j = i + 1; j < values.length; j++) {
+        if (values[i] === values[j]) {
+          pair.push(values[i], values[i]);
+
+        return true;
+        }
+      }
+  }
+  return false;
+}
+
+function sameDices(array) {
+  let countNumbers = [];
+  for (let i = 0; i < values.length; i++) {
+      for (let j = i + 1; j < values.length; j++) {
+        if (values[i] === values[j]) {
+          countNumbers.push(values[i]);
+
+        return countNumbers;
+        }
+      }
+  }
+}
+
+
